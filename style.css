@@ -7,6 +7,12 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -16,73 +22,240 @@ body {
    NAVIGATION MENU STYLES
    ============================================ */
 .nav-menu {
-  /* placeholder - styles come next */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  padding: 15px 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  height: 60px;
 }
 
 .nav-menu ul {
-  /* placeholder */
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .nav-menu li {
-  /* placeholder */
+  margin: 0;
 }
 
 .nav-menu a {
-  /* placeholder */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.nav-menu a:hover {
+  background-color: #c0392b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1) translateY(-2px);
 }
 
 /* ============================================
    HORIZONTAL SCROLL CONTAINER
    ============================================ */
 .scroll-container {
-  /* placeholder - horizontal scroll setup */
+  display: flex;
+  width: fit-content;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  perspective: 1000px;
 }
 
 .parallax-section {
-  /* placeholder - section styling */
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 /* ============================================
    PARALLAX LAYERS
    ============================================ */
 .parallax-layer {
-  /* placeholder - layer base styles */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  will-change: transform;
 }
 
 .layer-bg {
-  /* placeholder - background layer */
+  z-index: 1;
+  transform: translateZ(-100px) scale(1.1);
+  opacity: 0.8;
 }
 
 .layer-mid {
-  /* placeholder - middle layer */
+  z-index: 2;
+  transform: translateZ(-50px) scale(1.05);
+  opacity: 0.9;
+}
+
+.layer-ground {
+  z-index: 3;
+  transform: translateZ(-25px) scale(1.02);
 }
 
 .layer-fg {
-  /* placeholder - foreground layer */
+  z-index: 4;
+  background-color: transparent;
+  transform: translateZ(0) scale(1);
 }
 
 /* ============================================
    CONTENT AREA
    ============================================ */
 .content {
-  /* placeholder - text styling */
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5),
+               2px 2px 0px rgba(255, 255, 255, 0.3);
+  padding: 40px;
 }
 
 .content h1 {
-  /* placeholder */
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
 }
 
 .content p {
-  /* placeholder */
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+/* Foreground element styling */
+.foreground-element {
+  font-size: 120px;
+  animation: jump 0.6s ease-in-out infinite;
+  margin-top: 20px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes jump {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-30px); }
 }
 
 /* ============================================
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ============================================ */
 @media (max-width: 768px) {
-  /* placeholder - tablet styles */
+  .nav-menu {
+    padding: 12px 15px;
+    height: auto;
+  }
+
+  .nav-menu ul {
+    gap: 12px;
+  }
+
+  .nav-menu a {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .scroll-container {
+    height: 100vh;
+    margin-top: 0;
+  }
+
+  .content h1 {
+    font-size: 32px;
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+
+  .foreground-element {
+    font-size: 80px;
+  }
+
+  .layer-bg {
+    transform: translateZ(-50px) scale(1.05);
+  }
+
+  .layer-mid {
+    transform: translateZ(-25px) scale(1.03);
+  }
 }
 
 @media (max-width: 480px) {
-  /* placeholder - mobile styles */
+  .nav-menu {
+    padding: 10px 12px;
+    height: auto;
+  }
+
+  .nav-menu ul {
+    gap: 8px;
+  }
+
+  .nav-menu a {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .scroll-container {
+    height: 100vh;
+    margin-top: 0;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .content h1 {
+    font-size: 24px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+
+  .foreground-element {
+    font-size: 60px;
+  }
+
+  .layer-bg {
+    transform: translateZ(-30px) scale(1.02);
+    background-attachment: scroll;
+  }
+
+  .layer-mid {
+    transform: translateZ(-15px) scale(1.01);
+  }
 }
