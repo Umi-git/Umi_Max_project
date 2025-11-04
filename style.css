@@ -1,0 +1,88 @@
+/* ============================================
+   RESET & GENERAL STYLES
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* ============================================
+   NAVIGATION MENU STYLES
+   ============================================ */
+.nav-menu {
+  /* placeholder - styles come next */
+}
+
+.nav-menu ul {
+  /* placeholder */
+}
+
+.nav-menu li {
+  /* placeholder */
+}
+
+.nav-menu a {
+  /* placeholder */
+}
+
+/* ============================================
+   HORIZONTAL SCROLL CONTAINER
+   ============================================ */
+.scroll-container {
+  /* placeholder - horizontal scroll setup */
+}
+
+.parallax-section {
+  /* placeholder - section styling */
+}
+
+/* ============================================
+   PARALLAX LAYERS
+   ============================================ */
+.parallax-layer {
+  /* placeholder - layer base styles */
+}
+
+.layer-bg {
+  /* placeholder - background layer */
+}
+
+.layer-mid {
+  /* placeholder - middle layer */
+}
+
+.layer-fg {
+  /* placeholder - foreground layer */
+}
+
+/* ============================================
+   CONTENT AREA
+   ============================================ */
+.content {
+  /* placeholder - text styling */
+}
+
+.content h1 {
+  /* placeholder */
+}
+
+.content p {
+  /* placeholder */
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ============================================ */
+@media (max-width: 768px) {
+  /* placeholder - tablet styles */
+}
+
+@media (max-width: 480px) {
+  /* placeholder - mobile styles */
+}
