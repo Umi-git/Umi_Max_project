@@ -14,7 +14,7 @@ html, body {
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #c0392b;
   overflow: hidden;
 }
 
@@ -70,7 +70,7 @@ body {
   width: 400vw;
   height: calc(100vh - 60px);
   margin-top: 60px;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
@@ -84,7 +84,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  overflow: visible;
+  overflow: hidden;
   flex-shrink: 0;
 }
 
@@ -109,7 +109,7 @@ body {
   transform: translateZ(-100px) scale(1.1);
   opacity: 0.8;
   background-size: 10000px 100%;
-  animation: float-layer 3s ease-in-out infinite;
+  animation: float-layer 10s ease-in-out infinite;
 }
 
 .layer-mid {
@@ -117,6 +117,7 @@ body {
   transform: translateZ(-50px) scale(1.05);
   opacity: 0.9;
   background-size: 5000px 100%;
+  animation: slide-right 500s linear infinite;
 }
 
 .layer-ground {
@@ -179,9 +180,9 @@ body {
 /* ============================================
    ANIMATIONS
    ============================================ */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+@keyframes slide-right {
+  0% { transform: translateZ(-50px) scale(1.05) translateX(0px); }
+  100% { transform: translateZ(-50px) scale(1.05) translateX(-2000px); }
 }
 
 @keyframes float-layer {
