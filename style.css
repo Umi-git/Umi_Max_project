@@ -7,82 +7,293 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #c0392b;
+  overflow: hidden;
 }
 
 /* ============================================
    NAVIGATION MENU STYLES
    ============================================ */
 .nav-menu {
-  /* placeholder - styles come next */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  padding: 15px 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  height: 60px;
 }
 
 .nav-menu ul {
-  /* placeholder */
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-menu li {
-  /* placeholder */
+  margin: 0;
 }
 
 .nav-menu a {
-  /* placeholder */
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.nav-menu a:hover {
+  background-color: #c0392b;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1) translateY(-2px);
 }
 
 /* ============================================
    HORIZONTAL SCROLL CONTAINER
    ============================================ */
 .scroll-container {
-  /* placeholder - horizontal scroll setup */
+  display: flex;
+  width: 400vw;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  perspective: 1000px;
 }
 
 .parallax-section {
-  /* placeholder - section styling */
+  position: relative;
+  width: 400vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 /* ============================================
    PARALLAX LAYERS
    ============================================ */
 .parallax-layer {
-  /* placeholder - layer base styles */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: auto 100%;
+  background-position: 0 0;
+  background-attachment: scroll;
+  background-repeat: repeat-x;
+  will-change: transform;
 }
 
 .layer-bg {
-  /* placeholder - background layer */
+  z-index: 1;
+  transform: translateZ(-100px) scale(1.1);
+  opacity: 0.8;
+  background-size: 10000px 100%;
+  animation: float-layer 10s ease-in-out infinite;
 }
 
 .layer-mid {
-  /* placeholder - middle layer */
+  z-index: 2;
+  transform: translateZ(-50px) scale(1.05);
+  opacity: 0.9;
+  background-size: 5000px 100%;
+  animation: slide-right 500s linear infinite;
+}
+
+.layer-ground {
+  z-index: 3;
+  transform: translateZ(-25px) scale(1.02);
+  background-size: 1400px 100%;
 }
 
 .layer-fg {
-  /* placeholder - foreground layer */
+  z-index: 4;
+  background-color: transparent;
+  transform: translateZ(0) scale(1);
 }
 
 /* ============================================
    CONTENT AREA
    ============================================ */
 .content {
-  /* placeholder - text styling */
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5),
+               2px 2px 0px rgba(255, 255, 255, 0.3);
+  padding: 40px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
+.content-1 { left: 0%; }
+.content-2 { left: 100vw; }
+.content-3 { left: 200vw; }
+.content-4 { left: 300vw; }
+
 .content h1 {
-  /* placeholder */
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
 }
 
 .content p {
-  /* placeholder */
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+/* Foreground element styling */
+.foreground-element {
+  font-size: 120px;
+  animation: jump 0.6s ease-in-out infinite;
+  margin-top: 20px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes slide-right {
+  0% { transform: translateZ(-50px) scale(1.05) translateX(0px); }
+  100% { transform: translateZ(-50px) scale(1.05) translateX(-2000px); }
+}
+
+@keyframes float-layer {
+  0%, 100% { transform: translateZ(-100px) scale(1.1) translateY(0px); }
+  50% { transform: translateZ(-100px) scale(1.1) translateY(-10px); }
+}
+
+@keyframes jump {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-30px); }
+}
+
+/* Active section highlighting */
+.parallax-section:target {
+  filter: brightness(1.1);
+}
+
+.nav-menu a[href="#section1"]:target,
+.nav-menu a:is([href="#section1"]) {
+  /* Will be enhanced with JavaScript later */
 }
 
 /* ============================================
    RESPONSIVE DESIGN (MEDIA QUERIES)
    ============================================ */
+
+/* Tablet devices (max-width: 768px) - Adjust layout for medium screens */
 @media (max-width: 768px) {
-  /* placeholder - tablet styles */
+  .nav-menu {
+    padding: 12px 15px;
+    height: auto;
+  }
+
+  .nav-menu ul {
+    gap: 12px;
+  }
+
+  .nav-menu a {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .scroll-container {
+    height: 100vh;
+    margin-top: 0;
+  }
+
+  .content h1 {
+    font-size: 32px;
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+
+  .foreground-element {
+    font-size: 80px;
+  }
+
+  .layer-bg {
+    transform: translateZ(-50px) scale(1.05);
+  }
+
+  .layer-mid {
+    transform: translateZ(-25px) scale(1.03);
+  }
 }
 
+/* Mobile devices (max-width: 480px) - Optimize for small screens */
 @media (max-width: 480px) {
-  /* placeholder - mobile styles */
+  .nav-menu {
+    padding: 10px 12px;
+    height: auto;
+  }
+
+  .nav-menu ul {
+    gap: 8px;
+  }
+
+  .nav-menu a {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .scroll-container {
+    height: 100vh;
+    margin-top: 0;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .content h1 {
+    font-size: 24px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+
+  .foreground-element {
+    font-size: 60px;
+  }
+
+  .layer-bg {
+    transform: translateZ(-30px) scale(1.02);
+    background-attachment: scroll;
+  }
+
+  .layer-mid {
+    transform: translateZ(-15px) scale(1.01);
+  }
 }
